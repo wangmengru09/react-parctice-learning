@@ -5,6 +5,7 @@ class Home extends Component {
     super(props);
     this.state = {
       age: this.props.age
+      // initialName: this.props.homeName
     }
   }
   older() {
@@ -21,6 +22,11 @@ class Home extends Component {
     this.props.changeName('name')
   }
 
+  handleOnChange(event) {
+    console.log(event);
+    this.props.change(event.target.value);
+  }
+
   render() {
     return (
       <div className="container">
@@ -32,6 +38,8 @@ class Home extends Component {
             <button onClick={this.handleGreet.bind(this)} className="btn btn-primary">Greet</button>
             <hr />
             <button onClick={this.changeHeaderName.bind(this)} className="btn btn-primary">changeName</button>
+            <hr></hr>
+            <input type="text" value={this.props.homeName} onChange={(event) => this.handleOnChange(event)}></input>
           </div>
         </div>
       </div>
